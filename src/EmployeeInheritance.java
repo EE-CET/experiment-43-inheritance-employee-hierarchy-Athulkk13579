@@ -1,68 +1,88 @@
 import java.util.Scanner;
 
 class Employee {
-    String name;
-    int age;
-    long phoneNumber;
-    String address;
-    double salary;
+   String name;
+   int age;
+   String phoneNumber;
+   String address;
+   double salary;
 
-    void printSalary() {
-        System.out.println(salary);
-    }
+   Employee(String n,int a,String pN,String ad,double s)
+   {
+      this.name = n;
+      this.age = a;
+      this.phoneNumber = pN;
+      this.address = ad;
+      this.salary = s;
+   }
 }
 
-class Officer extends Employee {
-    String specialization;
+class Officer extends Employee{
+   String specialization;
+
+   Officer(String n,int a,String pN,String ad,double s,String sp)
+   {
+      super(n,a,pN,ad,s);
+      this.specialization = sp;
+   }
 }
 
-class Manager extends Employee {
-    String department;
+class Manager extends Employee{
+   String department;
+
+   Manager(String n,int a,String pN,String ad,double s,String d)
+   {
+      super(n,a,pN,ad,s);
+      this.department = d;
+   }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        // --- Input for Officer ---
-        Officer officer = new Officer();
-        officer.name = scanner.nextLine();
-        officer.age = scanner.nextInt();
-        officer.phoneNumber = scanner.nextLong();
-        scanner.nextLine(); // Consume newline left by nextLong
-        officer.address = scanner.nextLine();
-        officer.salary = scanner.nextDouble();
-        scanner.nextLine(); // Consume newline left by nextDouble
-        officer.specialization = scanner.nextLine();
+public class EmployeeInheritance {
+   public static void main(String[] args)
+   {
+      Scanner input = new Scanner(System.in);
 
-        // --- Input for Manager ---
-        Manager manager = new Manager();
-        manager.name = scanner.nextLine();
-        manager.age = scanner.nextInt();
-        manager.phoneNumber = scanner.nextLong();
-        scanner.nextLine(); // Consume newline left by nextLong
-        manager.address = scanner.nextLine();
-        manager.salary = scanner.nextDouble();
-        scanner.nextLine(); // Consume newline left by nextDouble
-        manager.department = scanner.nextLine();
 
-        // --- Output ---
-        System.out.println("Officer:");
-        System.out.println(officer.name);
-        System.out.println(officer.age);
-        System.out.println(officer.phoneNumber);
-        System.out.println(officer.address);
-        System.out.printf("%.0f%n", officer.salary); // formatted to match integer-like look in example if needed, or just println
-        System.out.println(officer.specialization);
+      String name1 = input.nextLine();
+      int age1 = input.nextInt();
+      input.nextLine(); // Consume newline left-over
+      String phone1 = input.nextLine();
+      String ad1 = input.nextLine();
+      double sal1 = input.nextDouble();
+      input.nextLine(); // Consume newline left-over
+      String spec1 = input.nextLine();
 
-        System.out.println("Manager:");
-        System.out.println(manager.name);
-        System.out.println(manager.age);
-        System.out.println(manager.phoneNumber);
-        System.out.println(manager.address);
-        System.out.printf("%.0f%n", manager.salary);
-        System.out.println(manager.department);
-        
-        scanner.close();
-    }
+      Officer off1 = new Officer(name1,age1,phone1,ad1,sal1,spec1);
+
+      String name2 = input.nextLine();
+      int age2 = input.nextInt();
+      input.nextLine(); // Consume newline left-over
+      String phone2 = input.nextLine();
+      String ad2 = input.nextLine();
+      double sal2 = input.nextDouble();
+      input.nextLine(); // Consume newline left-over
+      String dept1 = input.nextLine();
+      Manager man1 = new Manager(name2,age2,phone2,ad2,sal2,dept1);
+
+      System.out.println("Officer:");
+      System.out.println(off1.name);
+      System.out.println(off1.age);
+      System.out.println(off1.phoneNumber);
+      System.out.println(off1.address);
+      System.out.println(off1.salary);
+      System.out.println(off1.specialization);
+
+      System.out.println("Manager:");
+      System.out.println(man1.name);
+      System.out.println(man1.age);
+      System.out.println(man1.phoneNumber);
+      System.out.println(man1.address);
+      System.out.println(man1.salary);
+      System.out.println(man1.department);
+      
+      input.close();
+   }
+
+    
 }
